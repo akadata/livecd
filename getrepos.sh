@@ -1,5 +1,6 @@
 #!/bin/sh
-mkdir /opt/rcn/rpms
+
+mkdir -p /opt/rcn/rpms
 cat << EOF > /etc/yum.repos.d/prometheus.repo
 [prometheus-rpm_release]
 name=prometheus-rpm_release
