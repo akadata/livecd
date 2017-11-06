@@ -24,5 +24,9 @@ sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
 EOF
-#reposync -p /opt/rcn/rpms
+
+# Import RPM keys
+rpmkeys --import https://packagecloud.io/prometheus-rpm/release/gpgkey
+yum -y update
+reposync -p /opt/rcn/rpms
 reposync -n -r prometheus-rpm_release -p /opt/rcn/rpms/
