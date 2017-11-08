@@ -1,5 +1,5 @@
 #!/bin/sh
 
-mkdir -p /opt/rcn/rpms
+mkdir -p /opt/rpms
 yum -y update
-reposync -p /opt/rcn/rpms
+reposync -p /opt/rpms

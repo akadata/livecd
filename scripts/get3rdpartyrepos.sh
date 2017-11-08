@@ -2,7 +2,7 @@
 #
 # add and pull down third party repos and generate repodata files
 
-mkdir -p /opt/rcn/rpms
+mkdir -p /opt/rpms
 cat << EOF > /etc/yum.repos.d/prometheus.repo
 [prometheus-rpm_release]
 name=prometheus-rpm_release
@@ -30,5 +30,5 @@ EOF
 # Import RPM keys
 rpmkeys --import https://packagecloud.io/prometheus-rpm/release/gpgkey
 yum -y update
-reposync -n -r prometheus-rpm_release -p /opt/rcn/rpms/
-createrepo /opt/rcn
+reposync -n -r prometheus-rpm_release -p /opt/rpms/
+createrepo /opt/rpms

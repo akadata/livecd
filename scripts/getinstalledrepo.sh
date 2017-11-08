@@ -1,5 +1,5 @@
 #!/bin/bash
-mkdir /opt/rcn/rpms/installed
-rpm -qa|xargs -i yumdownloader --destdir /opt/rcn/rpms/installed {}
-createrepo /opt/rcn/rpms
+mkdir /opt/rpms/installed
+rpm -qa|xargs -i yumdownloader --destdir /opt/rpms/installed {}
+createrepo /opt/rpms
 
