@@ -1,4 +1,9 @@
-GConf2.x86_64
+#!/bin/bash
+
+yum -y update
+mkdir -p /opt/rpms/simple
+
+packages="GConf2.x86_64
 GeoIP.x86_64
 ModemManager-glib.x86_64
 NetworkManager.x86_64
@@ -643,8 +648,11 @@ yum-plugin-fastestmirror.noarch
 yum-utils.noarch
 zenity.x86_64
 zlib.x86_64
-#!/bin/bash
+"
+for i in $packages; do
+  echo "$i"
+  yumdownloader --destdir /opt/rpms/simple $i
+done
+#createrepo /opt/rpms
 
-yum list installed|cut -d' ' -f1 | grep -v Installed|grep -v Loaded > /opt/rcn/scratch/packages.txt
-cat /opt/rcn/ks/one.ks /opt/rcn/scratch/packages.txt /opt/rch/ks/two.ks > /opt/rcn/ks/config.ks
-livecd-creator --verbose --config=/opt/rcn/ks/config.ks --fslabel=NetMonInstaller --cache=/var/cache/live
+
