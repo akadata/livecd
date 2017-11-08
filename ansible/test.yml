@@ -1,0 +1,4 @@
+---
+- hosts: all
+  roles:
+   PolarisAlpha.RHEL7-STIG
