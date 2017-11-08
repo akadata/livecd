@@ -1,5 +1,5 @@
 # Minimal Disk Image
-# Scott Syms 2017 Base Information Services
+# Scott Syms 2017 Halifax Base Information Services
 
 # System authorization information
 auth --useshadow --enablemd5
@@ -46,17 +46,6 @@ clearpart --all
 part / --fstype="ext4" --size=5000
 part swap --size=1000
 
-%post --nochroot
-
-mkdir /mnt/sysimage/opt/rcn/rpms
-cp /opt/rcn/config.ks  /mnt/sysimage/opt/rcn/
-cp /opt/rcn/one.ks  /mnt/sysimage/opt/rcn/
-cp /opt/rcn/two.ks  /mnt/sysimage/opt/rcn/
-cp /opt/rcn/mkiso.sh  /mnt/sysimage/opt/rch/
-cp -ar /opt/rcn/rpms/*  /mnt/sysimage/opt/rcn/rpms
-
-# Remove random-seed
-rm /mnt/sysimage/var/lib/systemd/random-seed
 
 %packages
 
@@ -705,5 +694,19 @@ yum-plugin-fastestmirror.noarch
 yum-utils.noarch
 zenity.x86_64
 zlib.x86_64
+
+%end
+
+%post --nochroot
+
+mkdir /mnt/sysimage/opt/rcn/rpms
+cp /opt/rcn/config.ks  $INSTALL_ROOT/opt/rcn/
+cp /opt/rcn/one.ks  $INSTALL_ROOT/opt/rcn/
+cp /opt/rcn/two.ks  $INSTALL_ROOT/opt/rcn/
+cp /opt/rcn/mkiso.sh  $INSTALL_ROOT/opt/rch/
+cp -ar /opt/rcn/rpms/*  $INSTALL_ROOT/opt/rcn/rpms
+
+# Remove random-seed
+rm $INSTALL_ROOT/var/lib/systemd/random-seed
 
 %end
