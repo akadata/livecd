@@ -12,7 +12,7 @@ sshpw --username=root --plaintext vishnu
 firewall --enabled
 
 # Set up repositories
-repo --name=standard --baseurl=file:///opt/rcn/rpms/standard
+repo --name=standard --baseurl=file:///opt/rpms/
 
 # Network information
 network  --bootproto=dhcp --onboot=on --activate --device=eth0
