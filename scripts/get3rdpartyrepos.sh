@@ -2,6 +2,9 @@
 #
 # add and pull down third party repos and generate repodata files
 
+# Install Xen components
+yum -y install centos-release-xen
+
 mkdir -p /opt/rpms
 cat << EOF > /etc/yum.repos.d/prometheus.repo
 [prometheus-rpm_release]
@@ -31,4 +34,5 @@ EOF
 rpmkeys --import https://packagecloud.io/prometheus-rpm/release/gpgkey
 yum -y update
 reposync -n -r prometheus-rpm_release -p /opt/rpms/
+reposync -n -r centos-virt-xen -p /opt/rpms/
 createrepo /opt/rpms
