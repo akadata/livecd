@@ -692,9 +692,9 @@ zlib
 
 %post --nochroot
 
-mkdir $INSTALL_ROOT/opt/rcn/rpms
-cp -ar /opt/rcn/*  $INSTALL_ROOT/opt/rcn/
-cp -ar /opt/rcn/rpms/*  $INSTALL_ROOT/opt/rcn/rpms
+mkdir -p $INSTALL_ROOT/opt/rpms
+rsync -a -v /opt/rcn/*  $INSTALL_ROOT/opt/rcn/
+rsync -a -v /opt/rpms/*  $INSTALL_ROOT/opt/rpms/
 
 # Remove random-seed
 rm $INSTALL_ROOT/var/lib/systemd/random-seed
@@ -714,6 +714,5 @@ ExecStart=/usr/bin/node_exporter
 WantedBy=multi-user.target
 EOF
 systemctl enable node_exporter
-systemctl start node_exporter
 
 %end
