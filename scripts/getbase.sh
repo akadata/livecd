@@ -651,7 +651,7 @@ zlib
 "
 for i in $packages; do
   echo "$i"
-  yumdownloader --destdir /opt/rpms/simple $i
+  yumdownloader -q --destdir /opt/rpms/simple $i
 done
 createrepo /opt/rpms
 

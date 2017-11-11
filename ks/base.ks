@@ -103,8 +103,6 @@ celt051
 centos-logos.noarch
 centos-release
 centos-release-virt-common.noarch
-centos-release-xen
-centos-release-xen-common
 checkpolicy
 chkconfig
 chrony
@@ -671,11 +669,6 @@ webkitgtk4-plugin-process-gtk2
 which
 wodim
 wpa_supplicant
-xen
-xen-hypervisor
-xen-libs
-xen-licenses
-xen-runtime
 xfsprogs
 xkeyboard-config.noarch
 xml-common.noarch
@@ -700,10 +693,7 @@ zlib
 %post --nochroot
 
 mkdir /mnt/sysimage/opt/rcn/rpms
-cp /opt/rcn/config.ks  $INSTALL_ROOT/opt/rcn/
-cp /opt/rcn/one.ks  $INSTALL_ROOT/opt/rcn/
-cp /opt/rcn/two.ks  $INSTALL_ROOT/opt/rcn/
-cp /opt/rcn/mkiso.sh  $INSTALL_ROOT/opt/rch/
+cp -ar /opt/rcn/*  $INSTALL_ROOT/opt/rcn/
 cp -ar /opt/rcn/rpms/*  $INSTALL_ROOT/opt/rcn/rpms
 
 # Remove random-seed
