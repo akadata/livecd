@@ -692,7 +692,7 @@ zlib
 
 %post --nochroot
 
-mkdir /mnt/sysimage/opt/rcn/rpms
+mkdir $INSTALL_ROOT/opt/rcn/rpms
 cp -ar /opt/rcn/*  $INSTALL_ROOT/opt/rcn/
 cp -ar /opt/rcn/rpms/*  $INSTALL_ROOT/opt/rcn/rpms
 
