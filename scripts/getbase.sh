@@ -1,7 +1,8 @@
 #!/bin/bash
 
+# Create an archive of all the rpms required by the livecd archive
 yum -y update
-mkdir -p /opt/rpms/simple
+mkdir -p /opt/rpms/livecd
 
 packages="GConf2
 GeoIP
@@ -651,7 +652,7 @@ zlib
 "
 for i in $packages; do
   echo "$i"
-  yumdownloader -q --destdir /opt/rpms/simple $i
+  yumdownloader -q --destdir /opt/rpms/livecd $i
 done
 createrepo /opt/rpms
 

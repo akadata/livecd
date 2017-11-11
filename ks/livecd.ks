@@ -5,8 +5,8 @@
 auth --useshadow --enablemd5
 
 # Root passwords
-rootpw --plaintext vishnu
-sshpw --username=root --plaintext vishnu
+rootpw --plaintext password
+sshpw --username=root --plaintext password
 
 # Firewall configuration
 firewall --enabled
