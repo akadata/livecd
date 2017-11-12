@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Ensure that the basic repositories have been downloaded
-get3rdpartyrepos.sh
-getbase.sh
+/opt/rcn/scripts/get3rdpartyrepos.sh
+/opt/rcn/scripts/getbase.sh
 
 # Move to the iso directory to make the bootable DVD
 cd /opt/rcn/iso
