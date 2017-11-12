@@ -44,6 +44,7 @@ clearpart --all
 
 # Disk partitioning information
 part / --fstype="ext4" --size=5000
+part /opt --fstype="ext4" --size=5000 -grow
 part swap --size=1000
 
 
