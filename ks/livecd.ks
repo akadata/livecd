@@ -1,6 +1,18 @@
 # Minimal Disk Image
 # Scott Syms 2017 Halifax Base Information Services
 
+# Install this sucker
+install
+
+# Don't stop for unsupported hardware
+unsupported_hardware
+
+# CmdLine mode
+cmdline
+
+# Disable firstboot
+firstboot --disable
+
 # System authorization information
 auth --useshadow --enablemd5
 
@@ -8,8 +20,11 @@ auth --useshadow --enablemd5
 rootpw --plaintext password
 sshpw --username=root --plaintext password
 
+# Default Users
+user --name="bis" --password="password"
+
 # Firewall configuration
-firewall --enabled
+firewall --enabled --ssh
 
 # Set up repositories
 repo --name=rcnspin --baseurl=file:///opt/rpms
@@ -29,11 +44,11 @@ selinux --enforcing
 # Installation logging level
 logging --level=info
 
-# Shutdown after installation
-shutdown
+# Soft pivot after installation
+reboot --kexec
 
 # System timezone
-timezone  --utc Etc/UTC
+timezone  --utc UTC
 
 # System bootloader configuration
 bootloader --location=mbr
@@ -43,10 +58,15 @@ zerombr
 clearpart --all
 
 # Disk partitioning information
-part / --fstype="ext4" --size=5000
-part /opt --fstype="ext4" --size=5000 -grow
-part swap --size=1000
+part / --label="proot" --fstype="ext4" --size=5000
+part /opt --label="popt" --fstype="ext4" --size=5000 --grow
+part swap --label="pswap" --hibernation
 
+# Password policy
+pwpolicy root --minlen=6 --notempty
+
+# starting services
+services --enabled=docker,node_exporter
 
 %packages
 
@@ -690,6 +710,8 @@ zenity
 zlib
 
 %end
+
+%addon com_redhat_kdump --disable
 
 %post --nochroot
 
