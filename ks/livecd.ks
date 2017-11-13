@@ -62,8 +62,6 @@ part / --label="proot" --fstype="ext4" --size=5000
 part /opt --label="popt" --fstype="ext4" --size=5000 --grow
 part swap --label="pswap" --hibernation
 
-# Password policy
-pwpolicy root --minlen=6 --notempty
 
 # starting services
 services --enabled=docker,node_exporter
@@ -710,8 +708,6 @@ zenity
 zlib
 
 %end
-
-%addon com_redhat_kdump --disable
 
 %post --nochroot
 
