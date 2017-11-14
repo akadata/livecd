@@ -59,8 +59,8 @@ clearpart --all
 
 # Disk partitioning information
 part / --label="proot" --fstype="ext4" --size=5000
-part /opt --label="popt" --fstype="ext4" --size=5000 --grow
-part swap --label="pswap" --hibernation
+part /opt --label="popt" --fstype="ext4" --size=1000 --grow
+part swap --label="pswap" --recommended
 
 
 # starting services
