@@ -2,6 +2,7 @@
 
 # Create an archive of all the rpms required by the livecd archive
 yum -y update
+yum -y install yum.noarch yum-metadata-parser yum-plugin-fastestmirror.noarch yum-utils.noarch createrepo.noarch
 mkdir -p /opt/rpms/livecd
 
 packages="GConf2
